@@ -19,9 +19,9 @@ public:
     int minimumNumbers(int num, int k) {
         vector<int>a;
         memset(dp,-1,sizeof(dp));
-        for(int i=k;i<=num;i++)
+        for(int i=k;i<=num;i+=10)
         {
-            if(i%10==k&&i!=0)
+            if(i!=0)
                 a.push_back(i);
         }
         for(int i=0;i<a.size();i++)
