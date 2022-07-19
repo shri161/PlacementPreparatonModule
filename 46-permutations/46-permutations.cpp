@@ -1,28 +1,22 @@
 class Solution {
-    void solve(vector<int>op,vector<int>ip,vector<vector<int>>&ans,unordered_map<int,int>h)
+    void solve(vector<int>ip,vector<vector<int>>&ans,int x)
+    {  if(x==ip.size())
     {
-        if(op.size()==ip.size())
-        {ans.push_back(op);
-        return ;
-        }
-        for(int i=0;i<ip.size();i++)
-        {
-            if(h[ip[i]]==0)
-            {
-                op.push_back(ip[i]);
-                h[ip[i]]=1;
-                solve(op,ip,ans,h);
-                op.pop_back();
-                h[ip[i]]=0;
-            }
-        }
+      ans.push_back(ip);
+        return;
+    }
+     for(int i=x;i<ip.size();i++)
+     {
+         swap(ip[i],ip[x]);
+         solve(ip,ans,x+1);
+         swap(ip[i],ip[x]);
+     }
     }
 public:
     vector<vector<int>> permute(vector<int>& nums) {
-        vector<int>op;
+        
         vector<vector<int>>ans;
-        unordered_map<int,int>h;
-        solve(op,nums,ans,h);
+        solve(nums,ans,0);
         return ans;
     }
 };
