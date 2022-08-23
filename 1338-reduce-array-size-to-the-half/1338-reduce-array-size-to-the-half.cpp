@@ -8,12 +8,12 @@ public:
         {
             h[arr[i]]++;
         }
-        priority_queue<pair<int,int>>q;
+        priority_queue<int>q;
         for(int i=0;i<arr.size();i++)
         {
             if(h[arr[i]]>0)
             {
-                q.push({h[arr[i]],arr[i]});
+                q.push(h[arr[i]]);
                 h[arr[i]]=0;
             }
         }
@@ -21,8 +21,7 @@ public:
         int c=0;
         while(!q.empty())
         {
-              int a=q.top().first;
-              int b=q.top().second;
+              int a=q.top();
               q.pop();
               x=x-a;
               c++;
